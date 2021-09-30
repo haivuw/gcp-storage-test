@@ -1,0 +1,13 @@
+[
+  {
+    "origin": "https://localhost:3000",
+    "responseHeader": [
+      "application/json",
+      "text/plain;charset=UTF-8",
+      "application/x-www-form-urlencoded;charset=UTF-8",
+      "multipart/form-data"
+    ],
+    "method": ["GET", "POST"],
+    "maxAgeSeconds": 3600
+  }
+]
