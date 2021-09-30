@@ -2,10 +2,16 @@ import express from "express";
 import imageRouter from "./routers/uploadRouter.js";
 //import Multer from "multer";
 //import { Storage } from "@google-cloud/storage";
+import dotenv from "dotenv";
+import signRouter from "./routers/signRouter.js";
+import cors from "cors";
+import makePublicRouter from "./routers/makePublicRouter.js";
+dotenv.config();
 
 function Server(props) {
   // Variables
   const app = express();
+  app.use(cors());
 
   // gsc storage object using credentials
   // const storage = new Storage({
@@ -26,7 +32,9 @@ function Server(props) {
   // app.use(multer.single("file"));
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
-  app.use("/upload/", imageRouter);
+  // app.use("/upload/", imageRouter); UNUSED
+  app.use("/sign", signRouter); //GET SIGNED URL
+  app.use("/makePublic", makePublicRouter); //MAKE THE OBJECT PUBLIC ACCESSIBLE
 
   // Routes
   // app.post("/api/upload", (req, res, next) => {
